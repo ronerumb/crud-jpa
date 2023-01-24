@@ -69,5 +69,12 @@ public class ClientService {
 		return client;
 		
 	}
+	
+	public ClientDTO delete(Integer id) {
+		Client client = getById(id);
+		clientRepository.delete(client);		
+		return null;
+		
+	}
 
 }
