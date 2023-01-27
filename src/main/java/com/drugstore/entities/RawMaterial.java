@@ -3,11 +3,12 @@ package com.drugstore.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +25,7 @@ public class RawMaterial implements Serializable {
 	private String name;
 	private String note;
 	private float stock;
+
 	
 	public RawMaterial() {
 		
