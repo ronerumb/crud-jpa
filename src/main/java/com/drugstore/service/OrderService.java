@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.drugstore.DTO.OrderDTO;
+import com.drugstore.entities.Client;
 import com.drugstore.entities.Order;
 import com.drugstore.entities.RawMaterial;
 import com.drugstore.repository.OrderRepository;
@@ -19,6 +20,9 @@ public class OrderService {
 	private OrderRepository orderRepository;
 	
 	@Autowired
+	private ClientService clientService;
+	
+	@Autowired
 	private RawMaterialService rawMaterialService;
 
 	public OrderDTO insert(OrderDTO obj){
@@ -27,7 +31,8 @@ public class OrderService {
 		for(Integer id : obj.getRawMaterial()) {
 			rawMaterial.add(rawMaterialService.getById(id));
 		}
-		Order order = new Order(null, rawMaterial);
+		Client client = clientService.getById(obj.getClient());
+		Order order = new Order(null, rawMaterial,client);
 		orderRepository.save(order);
 		return obj;
 					

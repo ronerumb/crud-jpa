@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,15 +28,19 @@ public class Order  implements Serializable{
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<RawMaterial> rawMaterial;
 	
+	@ManyToOne
+	private Client client;
+	
 	public Order() {
 		
 		
 	}
 
-	public Order(Integer id, List<RawMaterial> rawMaterial) {
+	public Order(Integer id, List<RawMaterial> rawMaterial,Client client) {
 		super();
 		this.id = id;
 		this.rawMaterial = rawMaterial;
+		this.client = client;
 	}
 
 	public Integer getId() {
@@ -43,6 +49,16 @@ public class Order  implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public List<RawMaterial> getRawMaterial() {
