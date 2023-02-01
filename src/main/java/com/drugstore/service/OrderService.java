@@ -2,6 +2,7 @@ package com.drugstore.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,17 @@ public class OrderService {
 	public List<Order> getAll(){
 		List<Order> orders = orderRepository.findAll();
 		return orders;
+	}
+
+	public Order getById(Integer id) {
+		Optional<Order> order = orderRepository.findById(id);
+		return order.orElseThrow(() -> new RuntimeException("Order not found"));
+	}
+
+	public void delete(Integer id) {
+		Order order = getById(id);
+		orderRepository.delete(order);
+		
 	}
 	
 	
