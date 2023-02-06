@@ -32,7 +32,7 @@ public class ClientService {
 	public Client getById(Integer id) {
 
 		Optional<Client> client = clientRepository.findById(id);
-		return client.orElseThrow(() -> new ClientNotFoundException());
+		return client.orElseThrow(() -> new ClientNotFoundException("Cliente não encontrado"));
 
 	}
 

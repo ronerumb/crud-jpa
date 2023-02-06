@@ -12,12 +12,12 @@ public class MessageException {
 		
 	}
 
-	public MessageException(Long timestamp, Integer status, String error, String message) {
+	public MessageException(Long timestamp, Integer status, String error) {
 		super();
 		this.timestamp = timestamp;
 		this.status = status;
 		this.error = error;
-		this.message = message;
+	
 		
 	}
 
@@ -43,14 +43,6 @@ public class MessageException {
 
 	public void setError(String error) {
 		this.error = error;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 
