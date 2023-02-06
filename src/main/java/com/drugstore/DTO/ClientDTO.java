@@ -2,11 +2,20 @@ package com.drugstore.DTO;
 
 import com.drugstore.entities.Client;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class ClientDTO {
 
+	@NotBlank(message = "Campo name não pode ser em branco")
+	@NotNull(message = "Campo nome não pode ser nullo")
 	private String name;
+	@NotBlank(message = "Campo email não pode ser em branco")
+	@NotNull(message = "Campo email não pode ser nullo")
 	private String email;
 	private String phone;
+	@NotBlank(message = "Campo address não pode ser em branco")
+	@NotNull(message = "Campo address não pode ser nullo")
 	private String address;
 	
 	public ClientDTO() {

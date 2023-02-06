@@ -20,6 +20,8 @@ import com.drugstore.entities.Client;
 import com.drugstore.repository.ClientRepository;
 import com.drugstore.service.ClientService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "client")
 public class ClientController {
@@ -47,7 +49,7 @@ public class ClientController {
 	}
 
 	@PostMapping
-	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO obj) {
+	public ResponseEntity<ClientDTO> insert(@RequestBody @Valid ClientDTO obj) {
 
 		return ResponseEntity.ok().body(service.insert(obj));
 
