@@ -29,7 +29,7 @@ public class OrderController {
 	@PostMapping
 	public ResponseEntity<OrderDTO> insert(@RequestBody @Valid OrderDTO obj) throws Exception{
 				
-		return ResponseEntity.ok().body(service.insert(obj));
+		return ResponseEntity.created(null).body(service.insert(obj));
 	}
 	
 	@GetMapping

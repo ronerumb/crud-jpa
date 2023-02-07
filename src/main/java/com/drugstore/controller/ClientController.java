@@ -51,7 +51,7 @@ public class ClientController {
 	@PostMapping
 	public ResponseEntity<ClientDTO> insert(@RequestBody @Valid ClientDTO obj) {
 
-		return ResponseEntity.ok().body(service.insert(obj));
+		return ResponseEntity.created(null).body(service.insert(obj));
 
 	}
 

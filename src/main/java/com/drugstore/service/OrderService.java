@@ -6,12 +6,15 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.drugstore.DTO.OrderDTO;
 import com.drugstore.entities.Client;
 import com.drugstore.entities.Order;
 import com.drugstore.entities.RawMaterial;
 import com.drugstore.entities.RawMaterialOrder;
+import com.drugstore.exception.HandleException;
 import com.drugstore.exception.NotFoundException;
 import com.drugstore.repository.OrderRepository;
 
@@ -40,8 +43,9 @@ public class OrderService {
 			if(rm.getStock() >= rmo.getQuantity()) {
 				rawMaterial.add(rm);
 				rm.setStock(rm.getStock() - rmo.getQuantity());
+				
 			}else {
-				throw new NotFoundException("Quantidade pedida maior que o estoque disponivel");
+				throw new HandleException("Quantidade solicitada maior que a disponivel");
 			}
 			
 			

@@ -48,7 +48,7 @@ public class RawMaterialController {
 	@PostMapping
 	public ResponseEntity<RawMaterialDTO> insert(@RequestBody @Valid RawMaterialDTO obj) {
 
-		return ResponseEntity.ok().body(service.insert(obj));
+		return ResponseEntity.created(null).body(service.insert(obj));
 
 	}
 

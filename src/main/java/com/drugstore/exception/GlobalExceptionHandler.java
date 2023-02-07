@@ -28,5 +28,11 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MessageException(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), errors.toString()));
 		
 	}
+	
+	@ExceptionHandler(HandleException.class)
+	public ResponseEntity<MessageException> handleException(HandleException e){
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MessageException(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), e.getMessage()));
+		
+	}
 
 }
