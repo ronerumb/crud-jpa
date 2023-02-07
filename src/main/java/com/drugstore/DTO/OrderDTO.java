@@ -2,18 +2,26 @@ package com.drugstore.DTO;
 
 import java.util.List;
 
+import com.drugstore.entities.RawMaterialOrder;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 
 
 public class OrderDTO {
 
-	private List<Integer> rawMaterial;
+	
+	@NotNull(message = "Campo rawMaterial não pode ser nullo")
+	private List<RawMaterialOrder> rawMaterial;	
+	@NotNull(message = "Campo client não pode ser nullo")
 	private Integer client;
 
 	public OrderDTO() {
 
 	}
 
-	public OrderDTO(List<Integer> rawMaterial, Integer client) {
+	public OrderDTO(List<RawMaterialOrder> rawMaterial, Integer client) {
 		super();
 		this.rawMaterial = rawMaterial;
 		this.client = client;
@@ -27,11 +35,11 @@ public class OrderDTO {
 		this.client = client;
 	}
 
-	public List<Integer> getRawMaterial() {
+	public List<RawMaterialOrder> getRawMaterial() {
 		return rawMaterial;
 	}
 
-	public void setRawMaterial(List<Integer> rawMaterial) {
+	public void setRawMaterial(List<RawMaterialOrder> rawMaterial) {
 		this.rawMaterial = rawMaterial;
 	}
 

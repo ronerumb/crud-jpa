@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.drugstore.DTO.RawMaterialDTO;
 import com.drugstore.entities.RawMaterial;
+import com.drugstore.exception.NotFoundException;
 import com.drugstore.repository.RawMaterialRepository;
 
 
@@ -28,7 +29,7 @@ public class RawMaterialService {
 	public RawMaterial getById(Integer id) {
 
 		Optional<RawMaterial> rawMaterial = rawMaterialRepository.findById(id);
-		return rawMaterial.orElseThrow(() -> new RuntimeException("RawMaterial not found"));
+		return rawMaterial.orElseThrow(() -> new NotFoundException("Materia prima não encontrada"));
 
 	}
 

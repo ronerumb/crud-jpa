@@ -2,10 +2,16 @@ package com.drugstore.DTO;
 
 import com.drugstore.entities.RawMaterial;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class RawMaterialDTO {
 	
+	@NotBlank(message = "Campo name não pode ser em branco")
+	@NotNull(message = "Campo nome não pode ser nullo")
 	private String name;
-	private String note;
+	private String note;	
+	@NotNull(message = "Campo nome não pode ser nullo")
 	private float stock;
 	
 	public RawMaterialDTO() {

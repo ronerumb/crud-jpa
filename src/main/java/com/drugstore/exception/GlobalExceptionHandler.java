@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	@ExceptionHandler(ClientNotFoundException.class)
-	public ResponseEntity<MessageException> clientNotFound(ClientNotFoundException msg){
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<MessageException> clientNotFound(NotFoundException msg){
 		HttpStatus status = HttpStatus.NOT_FOUND;		
 		MessageException err = new MessageException(System.currentTimeMillis(), status.value(), msg.getMessage());
 		return ResponseEntity.status(status).body(err);

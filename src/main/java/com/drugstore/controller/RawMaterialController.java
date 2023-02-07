@@ -17,6 +17,8 @@ import com.drugstore.DTO.RawMaterialDTO;
 import com.drugstore.entities.RawMaterial;
 import com.drugstore.service.RawMaterialService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "rawmaterial")
 public class RawMaterialController {
@@ -44,7 +46,7 @@ public class RawMaterialController {
 	}
 
 	@PostMapping
-	public ResponseEntity<RawMaterialDTO> insert(@RequestBody RawMaterialDTO obj) {
+	public ResponseEntity<RawMaterialDTO> insert(@RequestBody @Valid RawMaterialDTO obj) {
 
 		return ResponseEntity.ok().body(service.insert(obj));
 

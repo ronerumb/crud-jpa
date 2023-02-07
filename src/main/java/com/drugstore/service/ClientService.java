@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.drugstore.DTO.ClientDTO;
 import com.drugstore.entities.Client;
 import com.drugstore.exception.GlobalExceptionHandler;
-import com.drugstore.exception.ClientNotFoundException;
+import com.drugstore.exception.NotFoundException;
 import com.drugstore.repository.ClientRepository;
 
 
@@ -32,7 +32,7 @@ public class ClientService {
 	public Client getById(Integer id) {
 
 		Optional<Client> client = clientRepository.findById(id);
-		return client.orElseThrow(() -> new ClientNotFoundException("Cliente não encontrado"));
+		return client.orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
 
 	}
 

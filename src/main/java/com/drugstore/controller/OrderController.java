@@ -16,6 +16,8 @@ import com.drugstore.DTO.OrderDTO;
 import com.drugstore.entities.Order;
 import com.drugstore.service.OrderService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "orders")
 public class OrderController {
@@ -25,9 +27,8 @@ public class OrderController {
 	
 	
 	@PostMapping
-	public ResponseEntity<OrderDTO> insert(@RequestBody OrderDTO obj){
-		
-		
+	public ResponseEntity<OrderDTO> insert(@RequestBody @Valid OrderDTO obj) throws Exception{
+				
 		return ResponseEntity.ok().body(service.insert(obj));
 	}
 	
